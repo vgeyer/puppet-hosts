@@ -1,0 +1,33 @@
+# ATTENTION!
+#
+# THIS FILE IS MANAGED BY PUPPET. DO NOT CHANGE.
+s
+::1       ip6-localhost ip6-loopback
+fe00::0   ip6-localnet
+ff00::0   ip6-mcastprefix
+ff02::1   ip6-allnodes
+ff02::2   ip6-allrouters
+ff02::3   ip6-allhosts
+127.0.0.1 localhost
+
+<%- @hosts.each do |name, options| -%>
+    <%- unless options.has_key?('ipv4') or options.has_key?('ipv6') -%>
+        <%= scope.function_fail(["The host #{name} has neither IPv4 nor IPv6 adress configured."]) %>
+    <%- end -%>
+    <%- if options.has_key?('ipv4') and !scope.function_validate_ipv4_address([options['ipv4']]) -%>
+        <%= scope.function_fail(["The given IPv4 (#{options['ipv4']}) is not valid."]) %>
+    <%- end -%>
+    <%- if options.has_key?('ipv6') and !scope.function_validate_ipv6_address([options['ipv6']]) -%>
+        <%= scope.function_fail(["The given IPv6 (#{options['ipv6']}) is not valid."]) %>
+    <%- end -%>
+    <%- families = %w(ipv4 ipv6) -%>
+    <%- families.each do |family| -%>
+        <%- alts = '' -%>
+        <%- if options.has_key?('alt') && options['alt'].kind_of?(Array) -%>
+            <%- alts = options['alt'].join(' ') -%>
+        <%- end -%>
+        <%- if options.has_key?(family) -%>
+<%= options[family] %> <%= name %> <%= alts %>
+        <%- end -%>
+    <%- end -%>
+<%- end -%>
