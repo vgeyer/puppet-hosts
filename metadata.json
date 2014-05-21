@@ -1,0 +1,57 @@
+{
+    "name": "lexance-hosts",
+    "version": "1.0.1",
+    "author": "lexance",
+    "summary": "UNKNOWN",
+    "license": "Apache License, Version 2.0",
+    "source": "git://github.com/lexance/puppet-hosts.git",
+    "project_page": "https://github.com/lexance/puppet-hosts",
+    "issues_url": "https://github.com/lexance/puppet-hosts/issues",
+    "description": "Manage (dualstack-)hosts in /etc/hosts.",
+    "dependencies": [
+        {
+            "name": "puppetlabs/stdlib",
+            "version_requirement": ">= 4.0.0"
+        }
+    ],
+    "operatingsystem_support": [
+        {
+            "operatingsystem": "RedHat",
+            "operatingsystemrelease": [
+                "5",
+                "6"
+            ]
+        },
+        {
+            "operatingsystem": "CentOS",
+            "operatingsystemrelease": [
+                "5",
+                "6"
+            ]
+        },
+        {
+            "operatingsystem": "Debian",
+            "operatingsystemrelease": [
+                "6",
+                "7"
+            ]
+        },
+        {
+            "operatingsystem": "Ubuntu",
+            "operatingsystemrelease": [
+                "10.04",
+                "12.04"
+            ]
+        }
+    ],
+    "requirements": [
+        {
+            "name": "pe",
+            "version_requirement": "3.2.x"
+        },
+        {
+            "name": "puppet",
+            "version_requirement": "3.2.x"
+        }
+    ]
+}

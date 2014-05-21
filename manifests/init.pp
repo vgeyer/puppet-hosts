@@ -14,6 +14,9 @@
 class hosts (
   $hosts = undef
 ) {
+  package { 'resolvconf':
+    ensure => absent
+  } ->
   file { '/etc/hosts':
     ensure  => present,
     owner   => 'root',
