@@ -17,11 +17,15 @@ class hosts (
   package { 'resolvconf':
     ensure => absent
   } ->
-  file { '/etc/hosts':
-    ensure  => present,
+  concat { '/etc/hosts':
     owner   => 'root',
     group   => 'root',
-    mode    => '0644',
-    content  => template('hosts/etc/hosts.erb'),
+    mode    => '0644'
+  }
+
+  concat::fragment { 'hosts_base':
+    target  => '/etc/hosts',
+    content => template('hosts/etc/hosts.erb'),
+    order   => '01',
   }
 }

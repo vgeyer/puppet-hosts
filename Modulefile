@@ -1,5 +1,5 @@
 name    'lexance-hosts'
-version '1.0.4'
+version '1.0.5'
 source 'git://github.com/lexance/puppet-hosts.git'
 author 'lexance'
 license 'Apache License, Version 2.0'
