@@ -4,6 +4,7 @@ Manage (dualstack-)hosts in /etc/hosts .
 
 ## Requirements
 * puppetlabs/stdlib >= 4.0.0
+* puppetlabs/concat >= 1.0.4
 
 ## Usage
 Various alt hostnames my be specified. IP Addresses are validated. At least a IPv4 OR IPv6 address must be specified.
